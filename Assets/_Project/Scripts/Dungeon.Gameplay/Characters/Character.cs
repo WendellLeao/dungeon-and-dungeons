@@ -1,4 +1,6 @@
 using Leaosoft;
+using Leaosoft.Input;
+using Leaosoft.Services;
 using UnityEngine;
 
 namespace Dungeon.Gameplay.Characters
@@ -11,8 +13,10 @@ namespace Dungeon.Gameplay.Characters
         protected override void OnBegin()
         {
             base.OnBegin();
+
+            IInputService inputService = ServiceLocator.GetService<IInputService>();
             
-            _characterMovement.Begin();
+            _characterMovement.Begin(inputService);
         }
 
         protected override void OnStop()
